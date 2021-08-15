@@ -1,0 +1,9 @@
+package kuli.wzq.springframework.beans.factory.config;
+
+import kuli.wzq.springframework.beans.BeansException;
+
+public interface InstantiationAwareBeanPostProcessor extends BeanPostProcessor{
+
+    Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) throws BeansException;
+
+}
