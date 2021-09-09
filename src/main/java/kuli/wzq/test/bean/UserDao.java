@@ -1,11 +1,20 @@
 package kuli.wzq.test.bean;
 
+import kuli.wzq.springframework.stereotype.Component;
+
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
 public class UserDao {
 
     private static Map<String, String> hashMap = new HashMap<>();
+
+    static {
+        hashMap.put("10001", "苦李");
+        hashMap.put("10002", "苦李1");
+        hashMap.put("10003", "苦李2");
+    }
 
     public void initDataMethod() {
         System.out.println("执行:init-method");

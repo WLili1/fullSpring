@@ -6,4 +6,8 @@
 	         http://www.springframework.org/schema/beans/spring-beans.xsd
 		 http://www.springframework.org/schema/context">
     <context:component-scan base-package="kuli.wzq.test.bean"/>
+
+    <bean class="kuli.wzq.springframework.beans.factory.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:token.properties"/>
+    </bean>
 </beans>

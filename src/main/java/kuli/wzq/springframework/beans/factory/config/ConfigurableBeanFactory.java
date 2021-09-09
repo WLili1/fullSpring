@@ -1,6 +1,7 @@
 package kuli.wzq.springframework.beans.factory.config;
 
 import kuli.wzq.springframework.beans.factory.HierarchicalBeanFactory;
+import kuli.wzq.springframework.util.StringValueResolver;
 
 public interface ConfigurableBeanFactory extends HierarchicalBeanFactory, SingletonBeanRegistry{
 
@@ -10,6 +11,9 @@ public interface ConfigurableBeanFactory extends HierarchicalBeanFactory, Single
 
     void addBeanPostProcessor(BeanPostProcessor beanPostProcessor);
 
+    void addEmbeddedValueResolver(StringValueResolver valueResolver);
+
+    String resolveEmbeddedValue(String value);
     /**
      * 销毁单例对象
      */

@@ -4,6 +4,7 @@ import kuli.wzq.springframework.aop.*;
 import kuli.wzq.springframework.aop.aspectj.AspectJExpressionPointcutAdvisor;
 import kuli.wzq.springframework.aop.framework.ProxyFactory;
 import kuli.wzq.springframework.beans.BeansException;
+import kuli.wzq.springframework.beans.PropertyValues;
 import kuli.wzq.springframework.beans.factory.BeanFactory;
 import kuli.wzq.springframework.beans.factory.BeanFactoryAware;
 import kuli.wzq.springframework.beans.factory.config.InstantiationAwareBeanPostProcessor;
@@ -64,5 +65,10 @@ public class DefaultAdvisorAutoProxyCreator implements InstantiationAwareBeanPos
 
     private boolean isInfrastructureClass(Class<?> beanClass) {
         return Advice.class.isAssignableFrom(beanClass) || Pointcut.class.isAssignableFrom(beanClass) || Advisor.class.isAssignableFrom(beanClass);
+    }
+
+    @Override
+    public PropertyValues postProcessPropertyValues(PropertyValues pvs, Object bean, String beanName) throws BeansException {
+        return pvs;
     }
 }

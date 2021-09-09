@@ -1,6 +1,7 @@
 package kuli.wzq.springframework.context.annotation;
 
 import cn.hutool.core.util.StrUtil;
+import kuli.wzq.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor;
 import kuli.wzq.springframework.beans.factory.config.BeanDefinition;
 import kuli.wzq.springframework.beans.factory.support.BeanDefinitionRegistry;
 import kuli.wzq.springframework.stereotype.Component;
@@ -26,6 +27,8 @@ public class ClassPathBeanDefinitionScanner extends ClassPathScanningCandidateCo
                 registry.registerBeanDefinition(determineBeanName(beanDefinition), beanDefinition);
             }
         }
+
+        registry.registerBeanDefinition("kuli.wzq.springframework.context.annotation.internalAutowiredAnnotationProcessor", new BeanDefinition(AutowiredAnnotationBeanPostProcessor.class));
     }
 
     private String resolveBeanScope(BeanDefinition beanDefinition) {
