@@ -5,9 +5,23 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	         http://www.springframework.org/schema/beans/spring-beans.xsd
 		 http://www.springframework.org/schema/context">
+
     <context:component-scan base-package="kuli.wzq.test.bean"/>
 
-    <bean class="kuli.wzq.springframework.beans.factory.PropertyPlaceholderConfigurer">
-        <property name="location" value="classpath:token.properties"/>
+    <bean id="userService" class="kuli.wzq.test.bean.UserService">
+        <property name="token" value="RejDlI78hu223Opo983Ds"/>
+    </bean>
+
+    <bean class="kuli.wzq.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"/>
+
+    <bean id="beforeAdvice" class="kuli.wzq.test.bean.UserServiceBeforeAdvice"/>
+
+    <bean id="methodInterceptor" class="kuli.wzq.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor">
+        <property name="advice" ref="beforeAdvice"/>
+    </bean>
+
+    <bean id="pointcutAdvisor" class="kuli.wzq.springframework.aop.aspectj.AspectJExpressionPointcutAdvisor">
+        <property name="expression" value="execution(* kuli.wzq.test.bean.IUserService.*(..))"/>
+        <property name="advice" ref="methodInterceptor"/>
     </bean>
 </beans>

@@ -5,7 +5,6 @@ import kuli.wzq.springframework.stereotype.Component;
 import java.util.HashMap;
 import java.util.Map;
 
-@Component
 public class UserDao {
 
     private static Map<String, String> hashMap = new HashMap<>();

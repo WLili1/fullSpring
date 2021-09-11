@@ -93,7 +93,7 @@ public class ApiTest {
         System.out.println("测试结果:" + proxy_jdk.queryUserInfo());
 
         IUserService proxy_cglib = (IUserService) new Cglib2AopProxy(advisedSupport).getProxy();
-        System.out.println("测试结果:" + proxy_cglib.register("苦"));
+//        System.out.println("测试结果:" + proxy_cglib.register("苦"));
     }
 
     @Test
@@ -115,5 +115,12 @@ public class ApiTest {
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring-scan.xml");
         IUserService userService = applicationContext.getBean("userService", IUserService.class);
         System.out.println("测试结果：" + userService.queryUserInfo());
+    }
+
+    @Test
+    public void test_autoProxy() {
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring-scan.xml");
+        IUserService userService = applicationContext.getBean("userService", IUserService.class);
+        System.out.println("测试结果:" + userService.queryUserInfo());
     }
 }
